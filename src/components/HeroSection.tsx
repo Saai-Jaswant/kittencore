@@ -1,9 +1,12 @@
 import heroCat from "@/assets/hero-cat.jpg";
 import PawIcon from "./PawIcon";
 import { playKittenMeow } from "@/lib/soundUtils";
+import { useScrollMeow } from "@/hooks/useScrollMeow";
 import { Heart } from "lucide-react";
 
 const HeroSection = () => {
+  const isMeowing = useScrollMeow();
+
   const handleKittenClick = () => {
     playKittenMeow();
   };
@@ -27,14 +30,27 @@ const HeroSection = () => {
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 rounded-3xl transform rotate-3 scale-105" />
 
+              {/* Meow speech bubble */}
+              <div 
+                className={`absolute -top-8 left-1/2 -translate-x-1/2 bg-white px-4 py-2 rounded-full shadow-warm z-10 transition-all duration-300 ${
+                  isMeowing ? 'opacity-100 scale-100 -translate-y-2' : 'opacity-0 scale-75 translate-y-0'
+                }`}
+              >
+                <span className="text-foreground font-handwriting text-xl">Meow~! 🐱</span>
+              </div>
+
               <img
                 src={heroCat}
                 alt="A friendly orange tabby cat with warm amber eyes"
                 onClick={handleKittenClick}
-                className="relative rounded-3xl shadow-warm-lg w-full object-cover aspect-square transition-transform duration-300 cursor-pointer hover:scale-[1.02]"
+                className={`relative rounded-3xl shadow-warm-lg w-full object-cover aspect-square transition-transform duration-300 cursor-pointer hover:scale-[1.02] ${
+                  isMeowing ? 'scale-[1.02] rotate-1' : ''
+                }`}
               />
               <PawIcon className="absolute -bottom-4 -right-4 w-16 h-16 text-paw animate-paw-bounce" />
-              <Heart className="absolute -top-2 -left-2 w-10 h-10 text-primary fill-current opacity-70" />
+              <Heart className={`absolute -top-2 -left-2 w-10 h-10 text-primary fill-current transition-all duration-300 ${
+                isMeowing ? 'scale-125 opacity-100' : 'scale-100 opacity-70'
+              }`} />
             </div>
           </div>
 
