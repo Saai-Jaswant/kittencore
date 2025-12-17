@@ -1,8 +1,13 @@
 import PawIcon from "./PawIcon";
+import { playKittenMeow } from "@/lib/soundUtils";
 
 const LetterSection = () => {
+  const handleLetterClick = () => {
+    playKittenMeow();
+  };
+
   return (
-    <section id="letter" className="py-20 px-4">
+    <section id="letter" className="py-20 px-4" onClick={handleLetterClick}>
       <div className="container max-w-4xl mx-auto">
         <div className="relative bg-card rounded-3xl shadow-warm-lg p-8 md:p-12 lg:p-16">
           {/* Decorative corner paws */}

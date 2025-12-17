@@ -49,9 +49,9 @@ const HeroSection = () => {
             <div className="mt-8 animate-fade-up delay-300">
               <a
                 href="#letter"
+                onClick={handleKittenClick}
                 className="inline-flex items-center gap-3 bg-primary text-primary-foreground px-8 py-4 rounded-2xl text-lg font-semibold shadow-warm hover:shadow-warm-lg transition-all duration-300 hover:scale-105"
               >
-                onClick={handleKittenClick}
                 <span>Read My Letter</span>
                 <PawIcon className="w-5 h-5" />
               </a>

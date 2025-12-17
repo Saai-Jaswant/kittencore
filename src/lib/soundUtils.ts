@@ -1,14 +1,10 @@
 /**
- * Play kitten meow sound
+ * Utility function to play meow sound
  */
 export const playKittenMeow = () => {
-  try {
-    const audio = new Audio('/kittencore/kitten-meow.mp3');
-    audio.volume = 0.7;
-    audio.play().catch((error) => {
-      console.log('Audio playback failed:', error);
-    });
-  } catch (error) {
-    console.log('Error playing sound:', error);
-  }
+  const audio = new Audio("/kittencore/meow.mp3");
+  audio.volume = 0.7;
+  audio.play().catch((error) => {
+    console.log("Audio playback failed:", error);
+  });
 };
