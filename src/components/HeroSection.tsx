@@ -1,10 +1,12 @@
 import heroCat from "@/assets/hero-cat.jpg";
 import PawIcon from "./PawIcon";
-import { useScrollMeow } from "@/hooks/useScrollMeow";
+import { playKittenMeow } from "@/lib/soundUtils";
 import { Heart } from "lucide-react";
 
 const HeroSection = () => {
-  const isMeowing = useScrollMeow();
+  const handleKittenClick = () => {
+    playKittenMeow();
+  };
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 py-20">
@@ -24,27 +26,15 @@ const HeroSection = () => {
           <div className="relative order-2 lg:order-1 animate-fade-up">
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 rounded-3xl transform rotate-3 scale-105" />
-              
-              {/* Meow speech bubble */}
-              <div 
-                className={`absolute -top-8 left-1/2 -translate-x-1/2 bg-white px-4 py-2 rounded-full shadow-warm z-10 transition-all duration-300 ${
-                  isMeowing ? 'opacity-100 scale-100 -translate-y-2' : 'opacity-0 scale-75 translate-y-0'
-                }`}
-              >
-                <span className="text-foreground font-handwriting text-xl">Meow~! 🐱</span>
-              </div>
 
               <img
                 src={heroCat}
                 alt="A friendly orange tabby cat with warm amber eyes"
-                className={`relative rounded-3xl shadow-warm-lg w-full object-cover aspect-square transition-transform duration-300 ${
-                  isMeowing ? 'scale-[1.02] rotate-1' : ''
-                }`}
+                onClick={handleKittenClick}
+                className="relative rounded-3xl shadow-warm-lg w-full object-cover aspect-square transition-transform duration-300 cursor-pointer hover:scale-[1.02]"
               />
               <PawIcon className="absolute -bottom-4 -right-4 w-16 h-16 text-paw animate-paw-bounce" />
-              <Heart className={`absolute -top-2 -left-2 w-10 h-10 text-primary fill-current transition-all duration-300 ${
-                isMeowing ? 'scale-125 opacity-100' : 'scale-100 opacity-70'
-              }`} />
+              <Heart className="absolute -top-2 -left-2 w-10 h-10 text-primary fill-current opacity-70" />
             </div>
           </div>
 
@@ -61,6 +51,7 @@ const HeroSection = () => {
                 href="#letter"
                 className="inline-flex items-center gap-3 bg-primary text-primary-foreground px-8 py-4 rounded-2xl text-lg font-semibold shadow-warm hover:shadow-warm-lg transition-all duration-300 hover:scale-105"
               >
+                onClick={handleKittenClick}
                 <span>Read My Letter</span>
                 <PawIcon className="w-5 h-5" />
               </a>
